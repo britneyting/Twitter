@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) IBOutlet UITableView *tableView; // step 1: view controller has a tableView as a subview
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -28,9 +29,22 @@
     self.tableView.dataSource = self; // step 3: view controller becomes its dataSource and delegate in viewDidLoad
     self.tableView.delegate = self;
     
-    // Get timeline
+    [self getTimeline];
+    
+    // code for activity indicator (refresh)
+    self.refreshControl = [[UIRefreshControl alloc] init]; // do self refreshControl instead of UIRefreshControl *refreshControl since we already declared the variable refreshControl in properties
+    [self.refreshControl addTarget:self action:@selector(getTimeline) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0]; // inserts the activity indicator at index0 (before the first tweet)
+    
+}
+
+// Get timeline
+- (void)getTimeline {
+    
+    [self.activityIndicator startAnimating];
+
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) { // step 4: make API request
-        if (tweets) { 
+        if (tweets) {
             self.tweets = [[NSMutableArray alloc] initWithArray:tweets]; // initializes an array filled with Tweets. Step 6: view controller stores that data passed into the completion handler
             NSLog(@"😎😎😎 Successfully loaded home timeline");
             for (Tweet *tweet in tweets) {
@@ -43,9 +57,11 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
+        [self.activityIndicator stopAnimating];
+
     }];
 }
-
 
 // step 9: numberOfRows returns the # of items returned from the API
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
