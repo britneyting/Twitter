@@ -19,6 +19,7 @@
 		6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD2790820BCC04D0085BC29 /* TimelineViewController.m */; };
 		7D65148D22CADEAB001C5EFD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D65148C22CADEAB001C5EFD /* User.m */; };
 		7D65149022CAE0D6001C5EFD /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D65148F22CAE0D6001C5EFD /* Tweet.m */; };
+		7D65149322CC0771001C5EFD /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D65149222CC0771001C5EFD /* TweetCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,8 @@
 		7D65148C22CADEAB001C5EFD /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		7D65148E22CAE0D6001C5EFD /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		7D65148F22CAE0D6001C5EFD /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		7D65149122CC0771001C5EFD /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		7D65149222CC0771001C5EFD /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 		6AD278FF20BCBF280085BC29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7D65149122CC0771001C5EFD /* TweetCell.h */,
+				7D65149222CC0771001C5EFD /* TweetCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D65149322CC0771001C5EFD /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				7D65148D22CADEAB001C5EFD /* User.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
