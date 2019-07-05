@@ -10,4 +10,6 @@
 
 @interface TimelineViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutBarButton;
+
 @end

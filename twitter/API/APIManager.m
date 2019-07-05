@@ -50,7 +50,7 @@ static NSString * const consumerSecret = @"RkwvC57aQeMk1U2APFrQ0eWmnjQjyVlNQJwlt
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
     
-    // Create a GET Request
+    // Create a GET Request (get API's data)
     
     // step 5: API Manager calls the completion handler passing back data
     [self GET:@"1.1/statuses/home_timeline.json"
@@ -62,6 +62,18 @@ static NSString * const consumerSecret = @"RkwvC57aQeMk1U2APFrQ0eWmnjQjyVlNQJwlt
        // There was a problem
        completion(nil, error);
    }];
+}
+
+- (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion{
+    NSString *urlString = @"1.1/statuses/update.json";
+    NSDictionary *parameters = @{@"status": text};
+
+    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+        Tweet *tweet = [[Tweet alloc] initWithDictionary:tweetDictionary];
+        completion(tweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
+    }];
 }
 
 @end

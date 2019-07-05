@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries; // needs definition from Tweet.m to use in APIManager.m
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 @end
 
 NS_ASSUME_NONNULL_END

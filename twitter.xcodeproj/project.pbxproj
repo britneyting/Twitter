@@ -20,6 +20,7 @@
 		7D65148D22CADEAB001C5EFD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D65148C22CADEAB001C5EFD /* User.m */; };
 		7D65149022CAE0D6001C5EFD /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D65148F22CAE0D6001C5EFD /* Tweet.m */; };
 		7D65149322CC0771001C5EFD /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D65149222CC0771001C5EFD /* TweetCell.m */; };
+		7D8128FC22CD5FA8008F9DDC /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D8128FB22CD5FA8008F9DDC /* ComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		7D65148F22CAE0D6001C5EFD /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		7D65149122CC0771001C5EFD /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		7D65149222CC0771001C5EFD /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		7D8128FA22CD5FA8008F9DDC /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		7D8128FB22CD5FA8008F9DDC /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,8 @@
 				7D65148C22CADEAB001C5EFD /* User.m */,
 				7D65148E22CAE0D6001C5EFD /* Tweet.h */,
 				7D65148F22CAE0D6001C5EFD /* Tweet.m */,
+				7D8128FA22CD5FA8008F9DDC /* ComposeViewController.h */,
+				7D8128FB22CD5FA8008F9DDC /* ComposeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				7D65149322CC0771001C5EFD /* TweetCell.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
 				7D65148D22CADEAB001C5EFD /* User.m in Sources */,
+				7D8128FC22CD5FA8008F9DDC /* ComposeViewController.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				7D65149022CAE0D6001C5EFD /* Tweet.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,

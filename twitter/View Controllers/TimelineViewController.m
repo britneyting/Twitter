@@ -11,8 +11,11 @@
 #import "Tweet.h"
 #import "TweetCell.h"
 #import "UIImageview+AFNetworking.h" // need this library if you want to display images (ex: profile pictures)
+#import "ComposeViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) IBOutlet UITableView *tableView; // step 1: view controller has a tableView as a subview
@@ -98,15 +101,32 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
+- (IBAction)logout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    [[APIManager shared] logout];
+}
+
+- (void)didTweet:(Tweet *)tweet { // the composeViewController sends the text in the composeTweetView over here as a Tweet object to post
+    [self.tweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//     Get the new view controller using [segue destinationViewController].
+//     Pass the selected object to the new view controller.
 
+    UINavigationController *navigationController = [segue destinationViewController];
+    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+    composeController.delegate = self;
+}
 
 @end

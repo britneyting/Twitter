@@ -183,15 +183,67 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE"/>
+                    <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="3gA-wi-zqJ">
+                            <connections>
+                                <action selector="logout:" destination="Lbl-k5-U4i" id="H3x-ZS-KdI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="edit-icon" id="1Ah-VE-9lc">
+                            <connections>
+                                <segue destination="eVc-Cl-gQr" kind="presentation" id="K0Q-uZ-oMP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="alq-Jx-woY" id="2yr-PN-xpq"/>
+                        <outlet property="logoutBarButton" destination="3gA-wi-zqJ" id="9tg-aY-4up"/>
                         <outlet property="tableView" destination="H1v-tr-C1m" id="p1J-9y-d17"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQh-hN-GQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="36.431784107946029"/>
+            <point key="canvasLocation" x="1385" y="37"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="VDu-9T-VGp">
+            <objects>
+                <viewController id="fR6-MG-bbd" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mc9-T2-wa4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K4T-IQ-pCB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="342"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="whu-Qs-Wbk"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yH9-KP-EXR">
+                        <barButtonItem key="leftBarButtonItem" image="close-icon" id="uTP-F5-7mi" userLabel="Item">
+                            <connections>
+                                <action selector="exit:" destination="fR6-MG-bbd" id="uwL-Vf-nlJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="hiT-QV-ZCV">
+                            <connections>
+                                <action selector="submitTweet:" destination="fR6-MG-bbd" id="oca-Uo-yP7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="closeBarButton" destination="uTP-F5-7mi" id="oZn-EW-O5o"/>
+                        <outlet property="composeTweetView" destination="K4T-IQ-pCB" id="Uqh-Ra-lkN"/>
+                        <outlet property="tweetBarButton" destination="hiT-QV-ZCV" id="V1z-5x-XIs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YFt-jw-7T3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2701.5999999999999" y="36.431784107946029"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WUT-Ke-VeR">
@@ -209,11 +261,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHS-35-jFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="36.431784107946029"/>
+            <point key="canvasLocation" x="700" y="37"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ria-1j-cOK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eVc-Cl-gQr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cZj-zT-MpQ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fR6-MG-bbd" kind="relationship" relationship="rootViewController" id="kUT-dK-dKJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ckE-3Q-bie" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046" y="37"/>
         </scene>
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="close-icon" width="26" height="24"/>
+        <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
