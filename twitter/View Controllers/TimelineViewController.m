@@ -80,7 +80,8 @@
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath]; // identifier is named TweetCell (click on Tweet Cell in storyboard and rename identifier to TweetCell
         
     Tweet *tweet = self.tweets[indexPath.row]; // Tweet class is blueprint for each tweet. (similar to NSDictionary *movie in FlixApp. We then call the tweets with self.tweets
-        
+    
+    cell.tweet = tweet;
     cell.nameLabel.text = tweet.user.name;
     cell.usernameLabel.text = tweet.user.screenName;
     cell.tweetboxLabel.text = tweet.text;
