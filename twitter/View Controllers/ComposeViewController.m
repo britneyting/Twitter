@@ -21,6 +21,7 @@
 }
 
 - (IBAction)submitTweet:(id)sender { // checks if the post was successful, and if it is, then calls method on delegate and passes data
+
     
     [[APIManager shared]postStatusWithText:self.composeTweetView.text completion:^(Tweet *tweet, NSError *error) {
         if(error){
@@ -33,8 +34,6 @@
         }
     }];
 }
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];

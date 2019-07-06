@@ -10,12 +10,14 @@
 #import "APIManager.h"
 #import "Tweet.h"
 #import "TweetCell.h"
-#import "UIImageview+AFNetworking.h" // need this library if you want to display images (ex: profile pictures)
+#import "UIImageView+AFNetworking.h" // need this library if you want to display images (ex: profile pictures)
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "DateTools.h"
+#import "DetailsViewController.h"
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate>
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate, DetailsViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) IBOutlet UITableView *tableView; // step 1: view controller has a tableView as a subview
@@ -118,16 +120,33 @@
     [self.tableView reloadData];
 }
 
+- (void)updateData:(UIViewController *)viewController {
+    
+}
+
 #pragma mark - Navigation
 
  // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //     Get the new view controller using [segue destinationViewController].
 //     Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueToCompose"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"segueToDetails"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet *tweet = self.tweets[indexPath.row];
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.tweet = tweet;
+        [self addChildViewController:detailsViewController];
+        detailsViewController.delegate = self;
+        NSLog(@"Tapping on a tweet!");
+    }
 
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-    composeController.delegate = self;
 }
+
 
 @end
